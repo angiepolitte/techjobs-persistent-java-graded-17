@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+
 import java.util.List;
 
 @Entity
@@ -13,10 +14,11 @@ public class Job {
     @Id
     @GeneratedValue
     private int id;
-
     private String name;
     private String employer;
     private String skills;
+
+
 
 
     public Job() {
@@ -54,5 +56,6 @@ public class Job {
     public void setSkills(String skills) {
         this.skills = skills;
     }
+
 
 }
