@@ -1,23 +1,27 @@
 package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Employer extends AbstractEntity {
-
-//    @Autowired
-//    private EmployerRepository employerRepository;
 
 
     @NotNull
     @NotBlank
     @Size
     private String location;
+
+    @OneToMany
+    @JoinColumn(name = "employer_id")
+    private List<Job> jobs = new ArrayList<>();
 
     public Employer() {}
 
@@ -31,5 +35,9 @@ public class Employer extends AbstractEntity {
 
     public void setLocation(@NotNull @NotBlank @Size String location) {
         this.location = location;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
     }
 }
